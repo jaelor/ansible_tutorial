@@ -1,0 +1,36 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+  
+  - name: Update repository index
+    yum:
+      update_cache: yes
+
+  - name: install httpd package
+    yum:
+      name: httpd
+      state: latest
+
+  - name: enable httpd service
+    service:
+      name: httpd
+      enabled: yes
+
+  - name: restart httpd service
+    service:
+      name: httpd
+      state: restarted
+
+  - name: enable http service on firewalld
+    ansible.posix.firewalld:
+      zone: public
+      service: http
+      permanent: true
+      state: enabled
+
+  - name: reload firewalld
+    service:
+      name: firewalld
+      state: reloaded
