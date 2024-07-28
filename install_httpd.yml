@@ -8,9 +8,11 @@
     yum:
       update_cache: yes
 
-  - name: install httpd package
+  - name: install httpd and php package
     yum:
-      name: httpd
+      name:
+        - httpd
+        - php
       state: latest
 
   - name: enable httpd service
