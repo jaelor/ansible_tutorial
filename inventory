@@ -1,2 +1,2 @@
-192.168.56.10
-192.168.56.20
+192.168.56.10 apache_package=httpd php_package=php
+192.168.56.20 apache_package=httpd php_package=php
